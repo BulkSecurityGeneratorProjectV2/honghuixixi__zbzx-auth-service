@@ -11,6 +11,7 @@ import java.net.ConnectException;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.nio.file.Files;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
@@ -322,7 +323,7 @@ public class WeiXinUtil {
 	        httpUrlConn.connect();  
 	        //获取文件扩展名
 	        String ext=getExt(httpUrlConn.getContentType());
-	        File tempFile = File.createTempFile(mediaId, ext);
+	        File tempFile = Files.createTempFile(mediaId, ext).toFile();
 	        // 获取微信返回的输入流
 	        InputStream in = httpUrlConn.getInputStream(); 
 	        //输出流，将微信返回的输入流内容写到文件中
